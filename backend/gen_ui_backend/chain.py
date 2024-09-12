@@ -35,7 +35,7 @@ def invoke_model(state: GenerativeUIState, config: RunnableConfig) -> Generative
             MessagesPlaceholder("input"),
         ]
     )
-    model = ChatOpenAI(model="gpt-4o", temperature=0, streaming=True)
+    model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, streaming=True, base_url="https://api.naga.ac/v1")
     tools = [github_repo, invoice_parser, weather_data]
     model_with_tools = model.bind_tools(tools)
     chain = initial_prompt | model_with_tools
